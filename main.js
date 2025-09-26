@@ -2,11 +2,20 @@
 
 // About Us section transition effect
 
+
+let BurgerMenu = document.querySelector(".burger"),
+    HeaderList = document.querySelector(".header-list");
+
+
+BurgerMenu.addEventListener("click", () => {
+       HeaderList.classList.toggle("active");
+})
+
 let AboutUsTxtBox = document.querySelector(".About-Us .text-box"),
     ServicesTxtBox = document.querySelector(".Our-Services .text-box"),
     VisionTxtBox = document.querySelector(".Our-Vision .text-box");
 
-console.log(window.scrollY);
+
 
 window.onscroll = () => {
        console.log(window.scrollY);

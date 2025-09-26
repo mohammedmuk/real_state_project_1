@@ -67,20 +67,93 @@ header .header-list ul a{
     color: var(--secondary-color);
 }
 
+.burger {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    user-select: none;
+    color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+
+        header{
+            width: 77%;
+        }
+
+        .header-list {
+            display: none;
+            position: absolute;
+            top: 80px;
+            right: 0;
+            background: #222;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+    
+        .header-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+    
+        .header-list li {
+            padding: 25px 0;
+        }
+    
+        .burger {
+            display: block; /* يظهر الزر */
+        }
+    
+        /* لما القائمة مفعلة */
+        .header-list.active {
+            display: block;
+        }
+    }
+    
+
 /* End Header  */
 
 
 /* Start Hero Section */
-
-.Hero-Section{
-    position: relative;
-    background-image: url(images/03.jpg);
-    height: 100dvh;
-    background-size: cover;
+   
+.Hero-Section {
+    height: 100vh;
+    background: url("images/03.jpg") center/cover no-repeat;
     background-attachment: fixed;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-.Hero-Section::before{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .hero-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-text h1 {
+    color: var(--secondary-color);
+    font-size: 2.5rem;
+    max-width: 14em;
+    padding-bottom: 15px;
+  }
+  .hero-text p {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    max-width: 400px;
+  }
+  .hero-img img {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+  }
+
+  .Hero-Section::before{
     content : '';
     position: absolute;
     top: 0;
@@ -90,60 +163,30 @@ header .header-list ul a{
     background-image: -webkit-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("images/overlay.png");
     
 }
-    
-
-.Hero-Section .hero-img img{
-    width: 320px;
-    height: 320px;
-    border-radius: 50%;
-}
-
-.Hero-Section .hero-content{
-    position: relative;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-}
-.Hero-Section .hero-text h1{
-    color: var(--main-color);
-    font-size: 2.5em;
-    width: 14em;
-}
-.Hero-Section .hero-text p{
-    color: #fff;
-    font-size: 1.1em;
-    padding-top: 20px;
-    width: 400px;
-    line-height: 1.7;
-}
-
-@media(max-width : 925px){
-    .Hero-Section .hero-content{
-        flex-wrap: wrap;
+  
+  /* Tablet (≤1024px) */
+  @media (max-width: 1024px) {
+    .hero-content {
+      margin-top: 110px;
+      flex-direction: column;
+      text-align: center;
     }
-
-    .Hero-Section .hero-content{
-        top: 60%;
+    .hero-img img {
+      width: 220px;
+      height: 220px;
     }
-
-    .Hero-Section .hero-text h1{
-        font-size: 1.5em;
+  }
+  
+  /* Mobile (≤768px) */
+  @media (max-width: 768px) {
+    .hero-text h1 {
+      font-size: 1.8rem;
     }
-    .Hero-Section .hero-img img{
-        width: 280px;
-        height: 280px;
+    .hero-text p {
+      font-size: 1rem;
     }
-}
-
-@media (max-width : 694px) {
-    .Hero-Section .hero-text{
-        margin-bottom: 25px;
-    }
-}
+  }
+  
 
 /* End Hero Section */
 
@@ -165,9 +208,9 @@ header .header-list ul a{
     width: 100%;
     border-top: 5px solid #b97713;
     transition: .7s;
-    opacity: 0;
-    transform: translateY(80px);
     height: 65dvh;
+    transform: translateY(80px);
+    opacity: 0;
     background-image: -webkit-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("images/overlay.png");
 
 }
@@ -180,10 +223,6 @@ header .header-list ul a{
     align-items: center;
 }
 
-.About-Us .text-content .col1{
-    display: flex;
-    flex-direction: column;
-}
 .About-Us .text-content .col1 h2{
     font-size: 40px;
     color: #fff;
@@ -201,6 +240,35 @@ header .header-list ul a{
 .About-Us .text-content .cols p{
     line-height: 1.7;
 }
+
+@media (max-width: 768px) {
+    .About-Us .text-content{
+        padding-top: 20px;
+        flex-direction: column;
+    }
+
+    .About-Us .text-content .cols{
+        width: auto;
+        height: auto;
+    }
+
+    .About-Us .text-content .col1 h2{
+        font-size: 30px;
+    }
+    
+    .About-Us .text-content .cols p{
+        font-size: 13px;
+        line-height: 2;
+    }
+
+}
+
+@media (max-width: 500px){
+    .About-Us .text-content .col2{
+        margin-top: 20px;
+    } 
+}
+
 /* End About Us Section  */
 
 
@@ -241,6 +309,12 @@ header .header-list ul a{
     color: var(--text-color);
 }
 
+@media (max-width: 768px){
+    .common .text-box{
+        width: auto;
+    }
+}
+
 /* End Common */
 
 
@@ -252,9 +326,10 @@ header .header-list ul a{
 
 .Our-Services .text-box{
     transition: .7s;
-    transform: translateX(130px);
+    transform: translateX(80px);
     opacity: 0;
 }
+
 
 
 /* End Our-Services Section  */
@@ -270,17 +345,11 @@ header .header-list ul a{
     left: 0;
     border-right: 5px solid #b97713;
     border-left: 0;
-    transform: translateX(-130px);
-    opacity: 0;
     transition: .7s;
+    transform: translateX(-80px);
+    opacity: 0;
 }
 
-@media (max-width : 780px) {
-    .text-box p{
-        font-size: 13px;
-    }
-
-}
 /* End Our-Partnerships Section */
 
 
@@ -300,6 +369,7 @@ header .header-list ul a{
     padding: 70px 0 70px 0;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .Our-Achivements .icons-content img{
@@ -323,6 +393,12 @@ header .header-list ul a{
     align-items: center;
 }
 
+@media (max-width: 768px){
+    .Our-Achivements .icons-content{
+        gap: 100px;
+    }
+}
+
 /* End Our-Achivements Section  */
 
 /* Start Contact-Us  */
@@ -331,7 +407,9 @@ header .header-list ul a{
     background-image: var(--main-background);
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
     padding-top: 60px;
+    gap: 100px;
 }
 
 .Contact-Us h2{
